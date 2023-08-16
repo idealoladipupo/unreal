@@ -55,7 +55,7 @@ body {
   border: 1.5px solid var(--main-color);
   background: var(--white-color);
 }
-nav {
+.nav-desktop {
   display: flex;
   justify-content: space-between;
   background: var(--black-color);
@@ -102,6 +102,103 @@ nav {
 .destop-links li a:hover {
   border-bottom: 1.5px solid var(--main-color);
 }
+
+.mobile-header {
+  background: var(--black-color);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 10px 20px;
+}
+
+.nav-mobile {
+  display: none;
+  position: relative;
+  z-index: 160;
+}
+.mobile-navigation {
+  border-top: 1px solid var(--white-color);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -800%;
+  z-index: 100;
+  transition: all 0.4s ease;
+}
+.show-mobile-navigation {
+  top: 80px;
+}
+.mobile-links {
+  list-style: none;
+  padding-bottom: 20px;
+  background: var(--black-color);
+}
+.mobile-links li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px 20px;
+  color: var(--main-color);
+}
+.mobile-links li a:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+.mobile-links .button {
+  display: inline-block;
+  margin: 20px 0 0 20px;
+}
+
+/* /// hanburger menu starts here///// */
+.navmobile-menu {
+  width: 2.5rem;
+  height: 2.8125rem;
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar {
+  width: 100%;
+  height: 0.1875rem;
+  background: var(--white-color);
+  position: relative;
+}
+
+.showMenu .menu-bar {
+  background: transparent;
+}
+
+.showMenu .menu-bar {
+  background: transparent;
+}
+
+.showMenu .menu-bar::before {
+  transform: rotate(45deg);
+}
+
+.showMenu .menu-bar::after {
+  transform: rotate(-45deg);
+}
+
+.menu-bar::before,
+.menu-bar::after {
+  content: "";
+  height: 0.1875rem;
+  width: 100%;
+  position: absolute;
+  background: var(--white-color);
+}
+
+.menu-bar::after {
+  transform: translateY(10px);
+}
+
+.menu-bar::before {
+  transform: translateY(-10px);
+}
+
+/* /// hanburger menu ends here///// */
+
 .header-banner {
   background: url(./img/header.jpg);
   background-position: bottom center;
@@ -109,8 +206,11 @@ nav {
   padding: 50px 50px 30px 50px;
   position: relative;
   color: var(--white-color);
+  z-index: 10;
+  overflow: hidden;
   background-size: cover;
 }
+
 .header-banner p {
   width: 500px;
   line-height: 1.7;
@@ -122,4 +222,14 @@ nav {
   right: 0;
   width: 300px;
   height: 300px;
+  animation: circularmotion 50s infinite linear;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile {
+    display: block;
+  }
 }
